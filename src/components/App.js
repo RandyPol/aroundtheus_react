@@ -1,15 +1,14 @@
 import React from 'react'
 import Header from './Header'
 import Main from './Main'
+import Footer from './Footer'
+
 const App = () => {
   return (
     <div className="page">
       <Header />
       <Main />
-      {/* <!-- Footer Section --> */}
-      <footer className="footer page__footer">
-        <p className="footer__copyright">© 2022 Around The U.S.</p>
-      </footer>
+      <Footer />
       {/* <!-- Profile Modal --> */}
       <div className="modal" id="modalEdit">
         {/* <!-- Form --> */}
@@ -204,7 +203,6 @@ const App = () => {
           </button>
         </div>
       </div>
-
       {/* <!-- Delete Card Modal --> */}
       <div className="modal" id="modalDelete">
         <div className="modal__deletedcard modal__container">
