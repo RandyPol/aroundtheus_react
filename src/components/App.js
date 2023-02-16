@@ -1,13 +1,9 @@
-import logo from '../images/logo_around_us.svg'
-
-function App() {
+import React from 'react'
+import Header from './Header'
+const App = () => {
   return (
     <div className="page">
-      <header className="header">
-        <div className="header__container">
-          <img src={logo} alt="The logo of Around The U.S." className="logo" />
-        </div>
-      </header>
+      <Header />
       <main className="main page__main">
         {/* <!-- Profile Section --> */}
         <section className="profile main__profile">
