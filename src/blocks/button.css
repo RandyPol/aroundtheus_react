@@ -1,0 +1,48 @@
+.button {
+  margin: 0;
+  padding: 0;
+  height: 50px;
+  border: 0;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.2;
+  text-align: center;
+
+  color: #ffffff;
+
+  background: #000000;
+  border-radius: 2px;
+
+  cursor: pointer;
+}
+
+.button[type='button'] {
+  position: absolute;
+  top: -48px;
+  right: -48px;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+.button:hover {
+  opacity: 0.8;
+}
+
+
+
+@media screen and (max-width: 569px) {
+  .button {
+    height: 46px;
+    font-size: 14px;
+  }
+
+  .button[type='button'] {
+    top: -48px;
+    right: 0;
+    height: fit-content;
+  }
+}

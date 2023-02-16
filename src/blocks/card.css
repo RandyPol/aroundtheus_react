@@ -1,0 +1,96 @@
+.card {
+  position: relative;
+  width: calc((100% - 34px) / 3);
+}
+
+.card__column-image {
+  display: block;
+  width: 100%;
+  height: 282px;
+  border-radius: 10px 10px 0px 0px;
+  cursor: pointer;
+}
+
+.card__container-titleicon {
+  display: flex;
+  padding: 25px 20px;
+  background-color: #fff;
+  border-radius: 0 0 10px 10px;
+}
+
+.card__column-image-title {
+  margin: 0;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 1.2;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card__column-heartcontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 3px;
+  margin-left: auto;
+}
+
+.card__heart-button {
+  min-width: 21px;
+  min-height: 19px;
+  padding: 0;
+  margin: 0;
+  background: transparent url(../images/card_heart.svg) center no-repeat;
+  border: none;
+  cursor: pointer;
+}
+.card__heart-button:hover {
+  opacity: 0.5;
+}
+
+.card__heart-button_isActive {
+  background: transparent url(../images/card_heart-active.svg) center no-repeat;
+}
+
+.card__trash-button {
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  min-width: 18px;
+  min-height: 19px;
+  padding: 0;
+  margin: 0;
+  background: transparent url(../images/Trash.svg) center no-repeat;
+  border: none;
+  cursor: pointer;
+}
+
+.card__heart-count {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.2;
+
+  color: #000000;
+}
+
+.card__trash-button:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 949px) {
+  .card {
+    width: calc((100% - 34px) / 2);
+  }
+}
+
+@media screen and (max-width: 569px) {
+  .card {
+    width: 100%;
+  }
+}

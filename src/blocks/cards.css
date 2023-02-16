@@ -1,0 +1,19 @@
+.cards {
+  display: flex;
+  width: 100%;
+  min-width: 282px;
+  flex-wrap: wrap;
+  gap: 20px 17px;
+}
+
+.cards__column {
+  margin: 0;
+}
+
+@media screen and (max-width: 569px) {
+  .cards {
+    flex-direction: column;
+    row-gap: 20px;
+  }
+
+}

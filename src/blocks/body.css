@@ -1,0 +1,26 @@
+body {
+  padding: 45px 200px 60px 200px;
+  background-color: #000;
+}
+
+@media screen and (max-width: 1139px) {
+  body {
+    padding: 45px 100px 60px 100px;
+  }
+}
+@media screen and (max-width: 949px) {
+  body {
+    padding: 45px 50px 60px 50px;
+  }
+}
+@media screen and (max-width: 849px) {
+  body {
+    padding: 45px 25px 60px 25px;
+  }
+}
+
+@media screen and (max-width: 569px) {
+  body {
+    padding: 0;
+  }
+}

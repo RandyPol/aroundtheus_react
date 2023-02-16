@@ -1,0 +1,19 @@
+.page {
+  width: 100%;
+  max-width: 880px;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+@media screen and (max-width: 569px) {
+
+  .page__main {
+    box-sizing: border-box;
+    padding: 0 19px 0;
+  }
+  .page__footer {
+    box-sizing: border-box;
+    padding: 0 19px 0;
+    margin-bottom: 36px;
+  }
+}

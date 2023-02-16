@@ -1,0 +1,149 @@
+.form {
+  padding: 34px 36px 36px;
+  width: 100%;
+  max-width: 430px;
+  box-sizing: border-box;
+  background-color: #fff;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+
+.form__title {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 1.2;
+  margin: 0;
+  margin-bottom: 54px;
+  min-width: 330px;
+}
+
+.form__fieldset {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.form__field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.form__field:last-of-type {
+  margin-bottom: 48px;
+}
+
+.form__input {
+  padding: 0;
+  padding-bottom: 13px;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.form__input_type_error {
+  border-bottom: 1px solid #ff0000;
+}
+
+.form__input-error {
+  display: none;
+  width:100%;
+  margin-top: 5px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.25;
+}
+
+.form__input-error_active {
+  display: block;
+  color: #ff0000;
+}
+
+.form__button {
+  margin: 0;
+  padding: 0;
+  height: 50px;
+  border: 0;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.2;
+  text-align: center;
+
+  color: #ffffff;
+
+  background: #000000;
+  border-radius: 2px;
+
+  cursor: pointer;
+}
+
+.form__button[type='button'] {
+  position: absolute;
+  top: -48px;
+  right: -48px;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+.form__button:hover {
+  opacity: 0.8;
+}
+
+.form__button_inactive{
+  opacity: 0.2;
+  border: 1px solid #000000;
+  border-radius: 2px;
+  color: #000000;
+  background: #F7F7F7;
+
+  pointer-events: none;
+}
+
+@media screen and (max-width: 569px) {
+  .form {
+    padding: 25px 22px 25px;
+    width: 100%;
+    max-width: 282px;
+    box-sizing: border-box;
+    background-color: #fff;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+  }
+
+  .form__title {
+    font-size: 18px;
+    margin: 0;
+    margin-bottom: 75px;
+  }
+
+  .form__input[id='about'] {
+    margin-bottom: 45px;
+  }
+
+  .form__button {
+    height: 46px;
+    font-size: 14px;
+  }
+
+  .form__button[type='button'] {
+    top: -48px;
+    right: 0;
+    height: fit-content;
+  }
+}
