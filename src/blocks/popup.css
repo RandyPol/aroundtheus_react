@@ -17,9 +17,7 @@
 
 .popup__container {
   position: relative;
-}
 
-.popup_container_addPlace {
   padding: 34px 36px 36px;
   width: 100%;
   max-width: 430px;
@@ -29,48 +27,16 @@
   border-radius: 10px;
 }
 
-/* .popup_container_addGarment {
-  display: flex;
-  flex-direction: column;
-  padding: 28px 28px 36px;
-  width: 100%;
-  max-width: 496px;
-  box-sizing: border-box;
-  background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  border-radius: 20px;
-} */
-/* .popup_container_image {
-  border-radius: 16px;
-  width: 498px;
-  height: 610px;
-
-  background-color: #fff;
-} */
-
-/* .popup_container_deleteConfirmation {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 60px 152px;
-  width: 670px;
-  height: 280px;
-  box-sizing: border-box;
-  background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  border-radius: 20px;
-} */
-
-/* .popup__close {
-  position: absolute;
-  top: 23px;
-  right: 30px;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: none;
-  cursor: pointer;
-} */
+.popup_container_addPlace {
+}
+.popup_container_editProfile {
+}
+.popup_container_editAvatar {
+}
+.popup_container_deleteConfirm {
+}
+.popup_container_photoExpand {
+}
 
 /* Popup close button */
 .popup__close-button {
