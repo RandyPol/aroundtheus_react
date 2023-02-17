@@ -31,7 +31,7 @@ const Popup = ({ isOpen, containerName, onClose, children }) => {
   // then we add the main wrapper with class `popup` and `popup_opened`
   return (
     <div
-      className={`popup ${isOpen ? 'popup_opened' : ''}`}
+      className={`popup ${isOpen ? 'popup_opened' : ''} popup_${containerName}`}
       onClick={handleOverlay}
     >
       {/* the container for the contents */}
