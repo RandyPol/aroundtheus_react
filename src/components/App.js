@@ -4,6 +4,7 @@ import Main from './Main'
 import Footer from './Footer'
 import AddNewPlacePopup from './AddNewPlacePopup'
 import EditProfilePopup from './EditProfilePopup'
+import EditAvatarPopup from './EditAvatarPopup'
 
 const App = () => {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] =
@@ -49,6 +50,14 @@ const App = () => {
         }}
       />
       <Footer />
+
+      {isEditAvatarPopupOpen && (
+        <EditAvatarPopup
+          isEditAvatarPopupOpen={isEditAvatarPopupOpen}
+          onEditAvatarClick={handleEditAvatarClick}
+          handleSubmitEditAvatar={handleSubmitEditAvatar}
+        />
+      )}
 
       {isEditProfilePopupOpen && (
         <EditProfilePopup
