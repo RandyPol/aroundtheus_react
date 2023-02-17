@@ -1,6 +1,21 @@
 import React from 'react'
+import pencilEdit from '../images/Edit-Button.svg'
+import addIcon from '../images/add-button.svg'
 
 const Main = () => {
+  const handleEditAvatarClick = () => {
+    const editAvatarModal = document.querySelector('#modalEditAvatar')
+    editAvatarModal.classList.add('modal_opened')
+  }
+  const handleEditProfileClick = () => {
+    const editModal = document.querySelector('#modalEdit')
+    editModal.classList.add('modal_opened')
+  }
+  const handleAddPlaceClick = () => {
+    const addModal = document.querySelector('#modalAdd')
+    addModal.classList.add('modal_opened')
+  }
+
   return (
     <main className="main page__main">
       {/* <!-- Profile Section --> */}
@@ -12,37 +27,38 @@ const Main = () => {
               alt="A portrait of User"
               className="profile__avatar"
             />
-            <div className="profile__avatar-edit"></div>
+            <div
+              className="profile__avatar-edit"
+              onClick={handleEditAvatarClick}
+            ></div>
           </div>
 
           <div className="profile__namerole-container">
             <div className="profile__name-container">
-              <h1 className="profile__name"></h1>
+              <h1 className="profile__name">Username</h1>
               <button
                 aria-label="edit"
                 className="profile__name-edit"
                 type="button"
+                onClick={handleEditProfileClick}
               >
                 <img
-                  src="<%=require('./images/Edit-Button.svg')%>"
+                  src={pencilEdit}
                   alt="Pencil icon"
                   className="profile__pencil"
                 />
               </button>
             </div>
-            <p className="profile__role"></p>
+            <p className="profile__role">UserRole</p>
           </div>
 
           <button
             aria-label="add"
             type="button"
             className="profile__add-button"
+            onClick={handleAddPlaceClick}
           >
-            <img
-              src="<%=require('./images/add-button.svg')%>"
-              alt="Add icon"
-              className="profile__add-icon"
-            />
+            <img src={addIcon} alt="Add icon" className="profile__add-icon" />
           </button>
         </div>
       </section>
