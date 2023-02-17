@@ -11,9 +11,9 @@ const AddNewPlacePopup = ({
       formTitle="New Place"
       name="addPlace"
       buttonText="Create"
-      onAddPlaceClick={onAddPlaceClick}
-      isAddPlacePopupOpen={isAddPlacePopupOpen}
-      handleSubmitAddPlace={handleSubmitAddPlace}
+      onClose={onAddPlaceClick}
+      isOpen={isAddPlacePopupOpen}
+      handleSubmit={handleSubmitAddPlace}
     >
       <fieldset className="form__fieldset">
         <label className="form__field">
