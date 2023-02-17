@@ -2,20 +2,7 @@ import React from 'react'
 import pencilEdit from '../images/Edit-Button.svg'
 import addIcon from '../images/add-button.svg'
 
-const Main = () => {
-  const handleEditAvatarClick = () => {
-    const editAvatarModal = document.querySelector('#modalEditAvatar')
-    editAvatarModal.classList.add('modal_opened')
-  }
-  const handleEditProfileClick = () => {
-    const editModal = document.querySelector('#modalEdit')
-    editModal.classList.add('modal_opened')
-  }
-  const handleAddPlaceClick = () => {
-    const addModal = document.querySelector('#modalAdd')
-    addModal.classList.add('modal_opened')
-  }
-
+const Main = ({ onEditProfileClick, onAddPlaceClick, onEditAvatarClick }) => {
   return (
     <main className="main page__main">
       {/* <!-- Profile Section --> */}
@@ -29,7 +16,7 @@ const Main = () => {
             />
             <div
               className="profile__avatar-edit"
-              onClick={handleEditAvatarClick}
+              onClick={onEditAvatarClick}
             ></div>
           </div>
 
@@ -40,7 +27,7 @@ const Main = () => {
                 aria-label="edit"
                 className="profile__name-edit"
                 type="button"
-                onClick={handleEditProfileClick}
+                onClick={onEditProfileClick}
               >
                 <img
                   src={pencilEdit}
@@ -56,7 +43,7 @@ const Main = () => {
             aria-label="add"
             type="button"
             className="profile__add-button"
-            onClick={handleAddPlaceClick}
+            onClick={onAddPlaceClick}
           >
             <img src={addIcon} alt="Add icon" className="profile__add-icon" />
           </button>
