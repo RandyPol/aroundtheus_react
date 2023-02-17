@@ -5,6 +5,7 @@ import Footer from './Footer'
 import AddNewPlacePopup from './AddNewPlacePopup'
 import EditProfilePopup from './EditProfilePopup'
 import EditAvatarPopup from './EditAvatarPopup'
+import ConfirmDeletePopup from './ConfirmDeletePopup'
 
 const App = () => {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] =
@@ -12,6 +13,8 @@ const App = () => {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false)
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] =
     React.useState(false)
+  const [isConfirmDeletePopupOpen, setIsConfirmDeletePopupOpen] =
+    React.useState(true)
 
   // Handle functions for opening/toggling the modals
   const handleEditAvatarClick = () => {
@@ -22,6 +25,9 @@ const App = () => {
   }
   const handleAddPlaceClick = () => {
     setIsAddPlacePopupOpen((prevs) => !prevs)
+  }
+  const handleConfirmDeleteClick = () => {
+    setIsConfirmDeletePopupOpen((prevs) => !prevs)
   }
 
   // Handle onSubmit functions for the modals
@@ -36,6 +42,10 @@ const App = () => {
   const handleSubmitEditAvatar = (e) => {
     e.preventDefault()
     console.log('Edit Avatar')
+  }
+  const handleSubmitConfirmDelete = (e) => {
+    e.preventDefault()
+    console.log('Confirm Delete')
   }
 
   return (
@@ -75,26 +85,19 @@ const App = () => {
         />
       )}
 
+      {isConfirmDeletePopupOpen && (
+        <ConfirmDeletePopup
+          isConfirmDeletePopupOpen={isConfirmDeletePopupOpen}
+          onConfirmDeleteClick={handleConfirmDeleteClick}
+          handleSubmitConfirmDelete={handleSubmitConfirmDelete}
+        />
+      )}
+
       {/* <!-- Photo Expand Modal --> */}
       {/* <div className="modal" id="modalPicture">
         <div className="modal__container">
           <img className="modal__picture-full" src="#" alt="expandedImage" />
           <p className="modal__piture-paragraph"></p>
-          <button
-            aria-label="exit"
-            className="button modal__button-close"
-            type="button"
-          >
-            <img src={closeIcon} alt="Close icon" className="modal__close" />
-          </button>
-        </div>
-      </div> */}
-
-      {/* <!-- Delete Card Modal --> */}
-      {/* <div className="modal" id="modalDelete">
-        <div className="modal__deletedcard modal__container">
-          <h2 className="modal__confirmation-title">Are you sure?</h2>
-          <button className="modal__button-yes">Yes</button>
           <button
             aria-label="exit"
             className="button modal__button-close"
