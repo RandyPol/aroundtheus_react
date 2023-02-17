@@ -66,66 +66,6 @@ const App = () => {
         />
       )}
 
-      {/* <!-- Profile Modal --> */}
-      {/* <div className="modal" id="modalEdit">
-        <form
-          action="#"
-          className="form modal__container"
-          name="profileForm"
-          noValidate
-        >
-          <h2 className="form__title">Edit profile</h2>
-          <fieldset className="form__fieldset">
-            <label className="form__field">
-              <input
-                type="text"
-                className="form__input"
-                id="name"
-                name="name"
-                placeholder="Name"
-                minLength="2"
-                maxLength="40"
-                required
-              />
-              <span className="form__input-error name-input-error">
-                Hello This is an Error
-              </span>
-            </label>
-            <label className="form__field">
-              <input
-                type="text"
-                className="form__input"
-                id="about"
-                name="about"
-                placeholder="About me"
-                minLength="2"
-                maxLength="200"
-                required
-              />
-              <span className="form__input-error about-input-error">
-                Hello This is an Error
-              </span>
-            </label>
-          </fieldset>
-          <fieldset className="form__fieldset">
-            <button
-              aria-label="submit"
-              type="submit"
-              className="form__button form__submit"
-            >
-              Save
-            </button>
-   
-            <button
-              aria-label="exit"
-              className="form__button modal__button-close"
-              type="button"
-            >
-              <img src={closeIcon} alt="Close icon" className="modal__close" />
-            </button>
-          </fieldset>
-        </form>
-      </div> */}
       {/* <!--Edit Avatar Modal --> */}
       {/* <div className="modal" id="modalEditAvatar">
         <form
