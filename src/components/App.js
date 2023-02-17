@@ -2,6 +2,7 @@ import React from 'react'
 import Header from './Header'
 import Main from './Main'
 import Footer from './Footer'
+import closeIcon from '../images/CloseIcon.svg'
 
 const App = () => {
   return (
@@ -65,11 +66,7 @@ const App = () => {
               className="form__button modal__button-close"
               type="button"
             >
-              <img
-                src="<%=require('./images/CloseIcon.svg')%>"
-                alt="Close icon"
-                className="modal__close"
-              />
+              <img src={closeIcon} alt="Close icon" className="modal__close" />
             </button>
           </fieldset>
         </form>
@@ -113,11 +110,7 @@ const App = () => {
               className="form__button modal__button-close"
               type="button"
             >
-              <img
-                src="<%=require('./images/CloseIcon.svg')%>"
-                alt="Close icon"
-                className="modal__close"
-              />
+              <img src={closeIcon} alt="Close icon" className="modal__close" />
             </button>
           </fieldset>
         </form>
@@ -176,11 +169,7 @@ const App = () => {
               className="form__button modal__button-close"
               type="button"
             >
-              <img
-                src="<%=require('./images/CloseIcon.svg')%>"
-                alt="Close icon"
-                className="modal__close"
-              />
+              <img src={closeIcon} alt="Close icon" className="modal__close" />
             </button>
           </fieldset>
         </form>
@@ -195,11 +184,7 @@ const App = () => {
             className="button modal__button-close"
             type="button"
           >
-            <img
-              src="<%=require('./images/CloseIcon.svg')%>"
-              alt="Close icon"
-              className="modal__close"
-            />
+            <img src={closeIcon} alt="Close icon" className="modal__close" />
           </button>
         </div>
       </div>
@@ -213,11 +198,7 @@ const App = () => {
             className="button modal__button-close"
             type="button"
           >
-            <img
-              src="<%=require('./images/CloseIcon.svg')%>"
-              alt="Close icon"
-              className="modal__close"
-            />
+            <img src={closeIcon} alt="Close icon" className="modal__close" />
           </button>
         </div>
       </div>
