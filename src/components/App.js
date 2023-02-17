@@ -3,6 +3,7 @@ import Header from './Header'
 import Main from './Main'
 import Footer from './Footer'
 import AddNewPlacePopup from './AddNewPlacePopup'
+import EditProfilePopup from './EditProfilePopup'
 
 const App = () => {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] =
@@ -48,7 +49,15 @@ const App = () => {
         }}
       />
       <Footer />
-      
+
+      {isEditProfilePopupOpen && (
+        <EditProfilePopup
+          isEditProfilePopupOpen={isEditProfilePopupOpen}
+          onEditProfileClick={handleEditProfileClick}
+          handleSubmitEditProfile={handleSubmitEditProfile}
+        />
+      )}
+
       {isAddPlacePopupOpen && (
         <AddNewPlacePopup
           isAddPlacePopupOpen={isAddPlacePopupOpen}
@@ -160,64 +169,7 @@ const App = () => {
           </fieldset>
         </form>
       </div> */}
-      {/* <!-- Add Card Modal --> */}
-      {/* <div className="modal" id="modalAdd">
-        <form
-          action="#"
-          className="form modal__container"
-          name="cardForm"
-          noValidate
-        >
-          <h2 className="form__title">New Place</h2>
-          <fieldset className="form__fieldset">
-            <label className="form__field">
-              <input
-                type="text"
-                className="form__input"
-                id="title"
-                name="name"
-                placeholder="Title"
-                minLength="1"
-                maxLength="30"
-                required
-              />
-              <span className="form__input-error title-input-error">
-                Hello This is an Error
-              </span>
-            </label>
-            <label className="form__field">
-              <input
-                type="url"
-                className="form__input"
-                id="link"
-                name="link"
-                placeholder="Image link"
-                required
-              />
-              <span className="form__input-error link-input-error">
-                Hello This is an Error
-              </span>
-            </label>
-          </fieldset>
-          <fieldset className="form__fieldset">
-            <button
-              aria-label="submit"
-              type="submit"
-              className="form__button form__submit"
-            >
-              Create
-            </button>
 
-            <button
-              aria-label="exit"
-              className="form__button modal__button-close"
-              type="button"
-            >
-              <img src={closeIcon} alt="Close icon" className="modal__close" />
-            </button>
-          </fieldset>
-        </form>
-      </div> */}
       {/* <!-- Photo Expand Modal --> */}
       {/* <div className="modal" id="modalPicture">
         <div className="modal__container">
