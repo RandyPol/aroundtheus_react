@@ -1,20 +1,31 @@
 import React from 'react'
+import Card from './CardTemplate/Card'
 import pencilEdit from '../images/Edit-Button.svg'
 import addIcon from '../images/add-button.svg'
 import api from '../utils/api'
 
-const Main = ({ onEditProfileClick, onAddPlaceClick, onEditAvatarClick }) => {
+const Main = ({
+  onEditProfileClick,
+  onAddPlaceClick,
+  onEditAvatarClick,
+  onCardClick,
+  handleCardDelete,
+}) => {
   const [userName, setUserName] = React.useState('Username')
   const [userRole, setUserRole] = React.useState('UserRole')
   const [userAvatar, setUserAvatar] = React.useState(null)
+  const [cards, setCards] = React.useState([])
 
   React.useEffect(() => {
     api
-      .getUserInfo()
-      .then((res) => {
-        setUserName(res.name)
-        setUserRole(res.about)
-        setUserAvatar(res.avatar)
+      .loadData()
+      .then(([userData, cardsData]) => {
+        console.log(userData)
+        console.log(cardsData)
+        setUserName(userData.name)
+        setUserRole(userData.about)
+        setUserAvatar(userData.avatar)
+        setCards(cardsData)
       })
       .catch((err) => console.log(err))
   }, [])
@@ -69,8 +80,19 @@ const Main = ({ onEditProfileClick, onAddPlaceClick, onEditAvatarClick }) => {
       </section>
       {/* <!-- Cards Section --> */}
       <section className="cards">
-        {/* <!-- Card Template --> */}
-        <template id="card"></template>
+        {cards.map((card) => {
+          return (
+            <Card
+              key={card._id}
+              card={card}
+              likesCount={card.likes.length}
+              name={card.name}
+              link={card.link}
+              onCardClick={onCardClick}
+              handleCardDelete={handleCardDelete}
+            />
+          )
+        })}
       </section>
     </main>
   )
