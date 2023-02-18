@@ -6,6 +6,7 @@ import AddNewPlacePopup from './AddNewPlacePopup'
 import EditProfilePopup from './EditProfilePopup'
 import EditAvatarPopup from './EditAvatarPopup'
 import ConfirmDeletePopup from './ConfirmDeletePopup'
+import ExpandImagePopup from './ExpandImagePopup'
 
 const App = () => {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] =
@@ -14,7 +15,8 @@ const App = () => {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] =
     React.useState(false)
   const [isConfirmDeletePopupOpen, setIsConfirmDeletePopupOpen] =
-    React.useState(true)
+    React.useState(false)
+  const [selectedCard, setSelectedCard] = React.useState(null)
 
   // Handle functions for opening/toggling the modals
   const handleEditAvatarClick = () => {
@@ -26,8 +28,19 @@ const App = () => {
   const handleAddPlaceClick = () => {
     setIsAddPlacePopupOpen((prevs) => !prevs)
   }
-  const handleConfirmDeleteClick = () => {
+  const handleConfirmDeleteClick = (card) => {
+    console.log('Delete Card', card)
     setIsConfirmDeletePopupOpen((prevs) => !prevs)
+  }
+
+  // Handle function for image expand
+  const handleCardClick = (card) => {
+    setSelectedCard(card)
+  }
+  // Handle delete card function
+  const handleCardDelete = (card) => {
+    handleConfirmDeleteClick(card)
+    console.log('Going to Confirm Delete Card')
   }
 
   // Handle onSubmit functions for the modals
@@ -55,9 +68,8 @@ const App = () => {
         onEditProfileClick={handleEditProfileClick}
         onAddPlaceClick={handleAddPlaceClick}
         onEditAvatarClick={handleEditAvatarClick}
-        onCardClick={() => {
-          console.log('KLK')
-        }}
+        onCardClick={handleCardClick}
+        handleCardDelete={handleCardDelete}
       />
       <Footer />
 
@@ -93,20 +105,12 @@ const App = () => {
         />
       )}
 
-      {/* <!-- Photo Expand Modal --> */}
-      {/* <div className="modal" id="modalPicture">
-        <div className="modal__container">
-          <img className="modal__picture-full" src="#" alt="expandedImage" />
-          <p className="modal__piture-paragraph"></p>
-          <button
-            aria-label="exit"
-            className="button modal__button-close"
-            type="button"
-          >
-            <img src={closeIcon} alt="Close icon" className="modal__close" />
-          </button>
-        </div>
-      </div> */}
+      {selectedCard && (
+        <ExpandImagePopup
+          selectedCard={selectedCard}
+          handleCardClick={handleCardClick}
+        />
+      )}
     </div>
   )
 }
