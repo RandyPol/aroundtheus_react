@@ -25,7 +25,7 @@
   position: relative;
 } */
 
-.modal__picture-full {
+/* .modal__picture-full {
   display: flex;
   margin: 0;
   max-width: 75vw;
@@ -44,7 +44,7 @@
   line-height: 1.25;
 
   color: #ffffff;
-}
+} */
 
 .modal__close {
   width: 40px;

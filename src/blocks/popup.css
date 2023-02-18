@@ -35,8 +35,38 @@
 }
 .popup_container_deleteConfirm {
 }
-.popup_container_photoExpand {
+.popup_container_imagePopup {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0;
+  max-width: 75vw;
+  max-height: 75vh;
+  background-color: transparent;
 }
+
+
+/* .popup__picture-full {
+  display: flex;
+  margin: 0;
+  max-width: 75vw;
+  max-height: 75vh;
+} */
+
+.popup__piture-paragraph {
+  max-width: 291px;
+  margin: 0;
+  margin-top: 10px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.25;
+
+  color: #ffffff;
+}
+
 
 /* Popup close button */
 .popup__close-button {
@@ -59,7 +89,7 @@
 
   color: #ffffff;
 
-  background: #000000;
+  background: transparent;
   border-radius: 2px;
 
   cursor: pointer;
@@ -69,3 +99,4 @@
   height: 40px;
   display: flex;
 }
+
