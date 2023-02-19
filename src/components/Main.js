@@ -80,9 +80,6 @@ const Main = ({
             <Card
               key={card._id}
               card={card}
-              likesCount={card.likes.length}
-              name={card.name}
-              link={card.link}
               onCardClick={onCardClick}
               handleCardDelete={handleCardDelete}
             />
