@@ -7,6 +7,9 @@ import EditProfilePopup from './EditProfilePopup'
 import EditAvatarPopup from './EditAvatarPopup'
 import ConfirmDeletePopup from './ConfirmDeletePopup'
 import ExpandImagePopup from './ExpandImagePopup'
+import api from '../utils/api'
+// Context imports
+import CurrentUserContext from '../contexts/CurrentUserContext'
 
 const App = () => {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] =
@@ -17,6 +20,17 @@ const App = () => {
   const [isConfirmDeletePopupOpen, setIsConfirmDeletePopupOpen] =
     React.useState(false)
   const [selectedCard, setSelectedCard] = React.useState(null)
+  const [currentUser, setCurrentUser] = React.useState(null)
+
+  React.useEffect(() => {
+    api
+      .getUserInfo()
+      .then((userData) => {
+        // console.log('User Data', userData)
+        setCurrentUser(userData)
+      })
+      .catch((err) => console.log(err))
+  }, [])
 
   // Handle functions for opening/toggling the modals
   const handleEditAvatarClick = () => {
@@ -62,55 +76,57 @@ const App = () => {
   }
 
   return (
-    <div className="page">
-      <Header />
-      <Main
-        onEditProfileClick={handleEditProfileClick}
-        onAddPlaceClick={handleAddPlaceClick}
-        onEditAvatarClick={handleEditAvatarClick}
-        onCardClick={handleCardClick}
-        handleCardDelete={handleCardDelete}
-      />
-      <Footer />
-
-      {isEditAvatarPopupOpen && (
-        <EditAvatarPopup
-          isEditAvatarPopupOpen={isEditAvatarPopupOpen}
-          onEditAvatarClick={handleEditAvatarClick}
-          handleSubmitEditAvatar={handleSubmitEditAvatar}
-        />
-      )}
-
-      {isEditProfilePopupOpen && (
-        <EditProfilePopup
-          isEditProfilePopupOpen={isEditProfilePopupOpen}
+    <div className="page page__center">
+      <CurrentUserContext.Provider value={{ currentUser }}>
+        <Header />
+        <Main
           onEditProfileClick={handleEditProfileClick}
-          handleSubmitEditProfile={handleSubmitEditProfile}
-        />
-      )}
-
-      {isAddPlacePopupOpen && (
-        <AddNewPlacePopup
-          isAddPlacePopupOpen={isAddPlacePopupOpen}
           onAddPlaceClick={handleAddPlaceClick}
-          handleSubmitAddPlace={handleSubmitAddPlace}
+          onEditAvatarClick={handleEditAvatarClick}
+          onCardClick={handleCardClick}
+          handleCardDelete={handleCardDelete}
         />
-      )}
+        <Footer />
 
-      {isConfirmDeletePopupOpen && (
-        <ConfirmDeletePopup
-          isConfirmDeletePopupOpen={isConfirmDeletePopupOpen}
-          onConfirmDeleteClick={handleConfirmDeleteClick}
-          handleSubmitConfirmDelete={handleSubmitConfirmDelete}
-        />
-      )}
+        {isEditAvatarPopupOpen && (
+          <EditAvatarPopup
+            isEditAvatarPopupOpen={isEditAvatarPopupOpen}
+            onEditAvatarClick={handleEditAvatarClick}
+            handleSubmitEditAvatar={handleSubmitEditAvatar}
+          />
+        )}
 
-      {selectedCard && (
-        <ExpandImagePopup
-          selectedCard={selectedCard}
-          handleCardClick={handleCardClick}
-        />
-      )}
+        {isEditProfilePopupOpen && (
+          <EditProfilePopup
+            isEditProfilePopupOpen={isEditProfilePopupOpen}
+            onEditProfileClick={handleEditProfileClick}
+            handleSubmitEditProfile={handleSubmitEditProfile}
+          />
+        )}
+
+        {isAddPlacePopupOpen && (
+          <AddNewPlacePopup
+            isAddPlacePopupOpen={isAddPlacePopupOpen}
+            onAddPlaceClick={handleAddPlaceClick}
+            handleSubmitAddPlace={handleSubmitAddPlace}
+          />
+        )}
+
+        {isConfirmDeletePopupOpen && (
+          <ConfirmDeletePopup
+            isConfirmDeletePopupOpen={isConfirmDeletePopupOpen}
+            onConfirmDeleteClick={handleConfirmDeleteClick}
+            handleSubmitConfirmDelete={handleSubmitConfirmDelete}
+          />
+        )}
+
+        {selectedCard && (
+          <ExpandImagePopup
+            selectedCard={selectedCard}
+            handleCardClick={handleCardClick}
+          />
+        )}
+      </CurrentUserContext.Provider>
     </div>
   )
 }
