@@ -2,7 +2,7 @@ import React from 'react'
 // Import the context value
 import CurrentUserContext from '../../contexts/CurrentUserContext'
 
-const Card = ({ card, onCardClick, handleCardDelete }) => {
+const Card = ({ card, onCardClick, onCardLike, handleCardDelete }) => {
   const { currentUser } = React.useContext(CurrentUserContext)
   // Why does this work?  I thought the currentUser value was undined on the first render.
   // console.log('Card.js: currentUser: ', currentUser)
@@ -17,6 +17,10 @@ const Card = ({ card, onCardClick, handleCardDelete }) => {
 
   const handleCardClick = () => {
     onCardClick(card)
+  }
+
+  const handleCardLike = () => {
+    onCardLike(card)
   }
 
   const handleCardDeleteClick = () => {
@@ -35,6 +39,7 @@ const Card = ({ card, onCardClick, handleCardDelete }) => {
         <h2 className="card__column-image-title">{card.name}</h2>
         <div className="card__column-heartcontainer">
           <button
+            onClick={handleCardLike}
             aria-label="heart"
             type="button"
             className={`card__heart-button ${cardLikeButtonClassName}`}

@@ -26,6 +26,23 @@ const Main = ({
       .catch((err) => console.log(err))
   }, [])
 
+  function handleCardLike(card) {
+    // Check one more time if this card was already liked
+    const isLiked = card.likes.some((user) => user._id === currentUser._id)
+
+    // Send a request to the API and getting the updated card data
+    api
+      .changeLikeCardStatus(card._id, !isLiked)
+      .then((newCard) => {
+        setCards((state) =>
+          state.map((currentCard) =>
+            currentCard._id === card._id ? newCard : currentCard
+          )
+        )
+      })
+      .catch((err) => console.log(err))
+  }
+
   return (
     <main className="main page__main">
       {/* <!-- Profile Section --> */}
@@ -82,6 +99,7 @@ const Main = ({
               card={card}
               onCardClick={onCardClick}
               handleCardDelete={handleCardDelete}
+              onCardLike={handleCardLike}
             />
           )
         })}

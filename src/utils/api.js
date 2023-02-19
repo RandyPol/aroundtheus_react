@@ -118,6 +118,19 @@ class Api {
   }
 
   /**
+   * This function is used to like or unlike a card
+   * @param {*} cardId card id to be liked or unliked
+   * @param {*} isLiked boolean value to indicate whether the card is liked or not
+   */
+  changeLikeCardStatus(cardId, isLiked) {
+    if (isLiked) {
+      return this.putCardLike(cardId)
+    } else {
+      return this.deleteCardLike(cardId)
+    }
+  }
+
+  /**
    *
    * @param {*} data avatar info to be updated
    * @retuns The updated avatar info from the server
