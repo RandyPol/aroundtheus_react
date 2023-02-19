@@ -10,6 +10,10 @@ const Card = ({ card, onCardClick, handleCardDelete }) => {
 
   //Check if the delete icon should be shown on the current card.
   const isOwn = card.owner._id === currentUser._id
+  // Check if the card was liked by the current user
+  const isLiked = card.likes.some((user) => user._id === currentUser._id)
+  // Variable for `className` for the like button
+  const cardLikeButtonClassName = isLiked ? 'card__heart-button_isActive' : ''
 
   const handleCardClick = () => {
     onCardClick(card)
@@ -33,7 +37,7 @@ const Card = ({ card, onCardClick, handleCardDelete }) => {
           <button
             aria-label="heart"
             type="button"
-            className="card__heart-button"
+            className={`card__heart-button ${cardLikeButtonClassName}`}
           ></button>
           <span className="card__heart-count">{card.likes.length}</span>
         </div>
