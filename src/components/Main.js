@@ -14,17 +14,7 @@ const Main = ({
   handleCardDelete,
 }) => {
   // Get the value of the context
-  const { currentUser } = React.useContext(CurrentUserContext)
-  const [cards, setCards] = React.useState([])
-
-  React.useEffect(() => {
-    api
-      .getInitialCards()
-      .then((cardsData) => {
-        setCards(cardsData)
-      })
-      .catch((err) => console.log(err))
-  }, [])
+  const { currentUser, cards, setCards } = React.useContext(CurrentUserContext)
 
   function handleCardLike(card) {
     // Check one more time if this card was already liked
@@ -98,7 +88,7 @@ const Main = ({
               key={card._id}
               card={card}
               onCardClick={onCardClick}
-              handleCardDelete={handleCardDelete}
+              onCardDelete={handleCardDelete}
               onCardLike={handleCardLike}
             />
           )
