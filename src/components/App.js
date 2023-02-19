@@ -21,13 +21,15 @@ const App = () => {
     React.useState(false)
   const [selectedCard, setSelectedCard] = React.useState(null)
   const [currentUser, setCurrentUser] = React.useState(null)
+  const [cards, setCards] = React.useState([])
+  const [isLoading, setIsLoading] = React.useState(false)
 
   React.useEffect(() => {
     api
-      .getUserInfo()
-      .then((userData) => {
-        // console.log('User Data', userData)
+      .loadData()
+      .then(([userData, cardsData]) => {
         setCurrentUser(userData)
+        setCards(cardsData)
       })
       .catch((err) => console.log(err))
   }, [])
@@ -42,8 +44,8 @@ const App = () => {
   const handleAddPlaceClick = () => {
     setIsAddPlacePopupOpen((prevs) => !prevs)
   }
-  const handleConfirmDeleteClick = (card) => {
-    console.log('Delete Card', card)
+  const handleDeleteClick = (card) => {
+    setSelectedCard(card)
     setIsConfirmDeletePopupOpen((prevs) => !prevs)
   }
 
@@ -52,9 +54,18 @@ const App = () => {
     setSelectedCard(card)
   }
   // Handle delete card function
-  const handleCardDelete = (card) => {
-    handleConfirmDeleteClick(card)
-    console.log('Going to Confirm Delete Card')
+  const handleConfirmDeleteClick = () => {
+    setIsLoading(true)
+    api
+      .deleteCard(selectedCard._id)
+      .then((res) => {
+        console.log('Card Deleted', res)
+        const newCards = cards.filter((c) => c._id !== selectedCard._id)
+        setCards(newCards)
+        setIsConfirmDeletePopupOpen((prevs) => !prevs)
+      })
+      .catch((err) => console.log(err))
+      .finally(() => setIsLoading(false))
   }
 
   // Handle onSubmit functions for the modals
@@ -70,21 +81,17 @@ const App = () => {
     e.preventDefault()
     console.log('Edit Avatar')
   }
-  const handleSubmitConfirmDelete = (e) => {
-    e.preventDefault()
-    console.log('Confirm Delete')
-  }
 
   return (
     <div className="page page__center">
-      <CurrentUserContext.Provider value={{ currentUser }}>
+      <CurrentUserContext.Provider value={{ currentUser, cards, setCards }}>
         <Header />
         <Main
           onEditProfileClick={handleEditProfileClick}
           onAddPlaceClick={handleAddPlaceClick}
           onEditAvatarClick={handleEditAvatarClick}
           onCardClick={handleCardClick}
-          handleCardDelete={handleCardDelete}
+          handleCardDelete={handleDeleteClick}
         />
         <Footer />
 
@@ -114,9 +121,10 @@ const App = () => {
 
         {isConfirmDeletePopupOpen && (
           <ConfirmDeletePopup
+            isLoading={isLoading}
             isConfirmDeletePopupOpen={isConfirmDeletePopupOpen}
             onConfirmDeleteClick={handleConfirmDeleteClick}
-            handleSubmitConfirmDelete={handleSubmitConfirmDelete}
+            onClose={handleDeleteClick}
           />
         )}
 
