@@ -7,9 +7,7 @@ const ConfirmDeletePopup = ({
   onConfirmDeleteClick,
   onClose,
 }) => {
-  const handleConfirmDelete = () => {
-    onConfirmDeleteClick()
-  }
+
 
   return (
     <Popup
@@ -19,7 +17,7 @@ const ConfirmDeletePopup = ({
     >
       <h2 className="form__title">Are you sure?</h2>
       <button
-        onClick={handleConfirmDelete}
+        onClick={onConfirmDeleteClick}
         aria-label="submit"
         type="submit"
         className="form__button popup__delete_confirm"

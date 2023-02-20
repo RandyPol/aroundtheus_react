@@ -23,6 +23,10 @@ const Card = ({ card, onCardClick, onCardLike, onCardDelete }) => {
     onCardLike(card)
   }
 
+  const handleDeleteClick = () => {
+    onCardDelete(card)
+  }
+
   return (
     <div className="card cards__column">
       <img
@@ -48,7 +52,7 @@ const Card = ({ card, onCardClick, onCardLike, onCardDelete }) => {
           aria-label="trash"
           type="button"
           className="card__trash-button"
-          onClick={onCardDelete}
+          onClick={handleDeleteClick}
         ></button>
       )}
     </div>

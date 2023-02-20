@@ -12,6 +12,7 @@ const Main = ({
   onEditAvatarClick,
   onCardClick,
   handleCardDelete,
+  setSelectedCard,
 }) => {
   // Get the value of the context
   const { currentUser, cards, setCards } = React.useContext(CurrentUserContext)
@@ -31,6 +32,11 @@ const Main = ({
         )
       })
       .catch((err) => console.log(err))
+  }
+
+  const onCardDelete = (card) => {
+    setSelectedCard(card)
+    handleCardDelete()
   }
 
   return (
@@ -88,7 +94,7 @@ const Main = ({
               key={card._id}
               card={card}
               onCardClick={onCardClick}
-              onCardDelete={handleCardDelete}
+              onCardDelete={onCardDelete}
               onCardLike={handleCardLike}
             />
           )
