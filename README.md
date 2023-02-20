@@ -34,3 +34,19 @@ The **"Api"** class constructor takes an options object with **"baseUrl"** and *
 The api object is an instance of the Api class with the base URL and headers set as options. This object exports the methods to interact with the RESTful API.
 
 Note that this project is based on a previous project that was built using vanilla JavaScript. However, this project has been re-done from the ground up using React to take advantage of modern front-end technologies and coding practices.
+
+## Project Images
+
+### Homepage Screenshot
+
+![Homepage Image](/src/images/ProjectScreenshots/Mainpage.png)
+
+## Form Validation: 
+
+### An example of an invalid form with a validation message and disabled submit button
+
+![Invalid form Image](/src/images/ProjectScreenshots/InvalidForm.png)
+
+### An example of a valid input with no validation message and enabled submit button
+
+![Valid form Image](/src/images/ProjectScreenshots/InvalidForm.png)
