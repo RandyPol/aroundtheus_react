@@ -27,14 +27,6 @@
   border-radius: 10px;
 }
 
-.popup_container_addPlace {
-}
-.popup_container_editProfile {
-}
-.popup_container_editAvatar {
-}
-.popup_container_deleteConfirm {
-}
 .popup_container_imagePopup {
   display: flex;
   justify-content: center;
@@ -46,12 +38,12 @@
 }
 
 
-/* .popup__picture-full {
+.popup__picture-full {
   display: flex;
   margin: 0;
   max-width: 75vw;
   max-height: 75vh;
-} */
+}
 
 .popup__piture-paragraph {
   max-width: 291px;

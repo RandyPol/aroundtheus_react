@@ -19,6 +19,7 @@ const App = () => {
     React.useState(false)
   const [isConfirmDeletePopupOpen, setIsConfirmDeletePopupOpen] =
     React.useState(false)
+  const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false)
   const [selectedCard, setSelectedCard] = React.useState(null)
   const [currentUser, setCurrentUser] = React.useState(null)
   const [cards, setCards] = React.useState([])
@@ -44,14 +45,14 @@ const App = () => {
   const handleAddPlaceClick = () => {
     setIsAddPlacePopupOpen((prevs) => !prevs)
   }
-  const handleDeleteClick = (card) => {
-    setSelectedCard(card)
+  const handleDeleteClick = () => {
     setIsConfirmDeletePopupOpen((prevs) => !prevs)
   }
 
   // Handle function for image expand
   const handleCardClick = (card) => {
     setSelectedCard(card)
+    setIsImagePopupOpen((prevs) => !prevs)
   }
   // Handle delete card function
   const handleConfirmDeleteClick = () => {
@@ -59,7 +60,6 @@ const App = () => {
     api
       .deleteCard(selectedCard._id)
       .then((res) => {
-        console.log('Card Deleted', res)
         const newCards = cards.filter((c) => c._id !== selectedCard._id)
         setCards(newCards)
         setIsConfirmDeletePopupOpen((prevs) => !prevs)
@@ -74,6 +74,7 @@ const App = () => {
     e.preventDefault()
     console.log('Edit Profile')
   }
+  // Handle onSubmit functions for the add new card modal
   const handleSubmitAddPlace = (newCard) => {
     setIsLoading(true)
     api
@@ -102,6 +103,7 @@ const App = () => {
           onEditAvatarClick={handleEditAvatarClick}
           onCardClick={handleCardClick}
           handleCardDelete={handleDeleteClick}
+          setSelectedCard={setSelectedCard}
         />
         <Footer />
 
@@ -139,7 +141,7 @@ const App = () => {
           />
         )}
 
-        {selectedCard && (
+        {isImagePopupOpen && (
           <ExpandImagePopup
             selectedCard={selectedCard}
             handleCardClick={handleCardClick}
