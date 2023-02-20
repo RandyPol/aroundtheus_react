@@ -70,13 +70,23 @@ const App = () => {
 
   // Handle onSubmit functions for the modals
   const handleSubmitEditProfile = (e) => {
+    setIsLoading(true)
     e.preventDefault()
     console.log('Edit Profile')
   }
-  const handleSubmitAddPlace = (e) => {
-    e.preventDefault()
-    console.log('Add Place')
+  const handleSubmitAddPlace = (newCard) => {
+    setIsLoading(true)
+    api
+      .postNewCard(newCard)
+      .then((res) => {
+        console.log('Card Added', res)
+        setCards([res, ...cards])
+        setIsAddPlacePopupOpen((prevs) => !prevs)
+      })
+      .catch((err) => console.log(err))
+      .finally(() => setIsLoading(false))
   }
+
   const handleSubmitEditAvatar = (e) => {
     e.preventDefault()
     console.log('Edit Avatar')
@@ -113,6 +123,7 @@ const App = () => {
 
         {isAddPlacePopupOpen && (
           <AddNewPlacePopup
+            isLoading={isLoading}
             isAddPlacePopupOpen={isAddPlacePopupOpen}
             onAddPlaceClick={handleAddPlaceClick}
             handleSubmitAddPlace={handleSubmitAddPlace}
