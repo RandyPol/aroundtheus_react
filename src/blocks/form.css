@@ -55,8 +55,7 @@
 }
 
 .form__input-error {
-  display: none;
-  width:100%;
+  width: 100%;
   margin-top: 5px;
 
   font-family: 'Inter';
@@ -64,6 +63,8 @@
   font-weight: 400;
   font-size: 12px;
   line-height: 1.25;
+
+  color: #ff0000;
 }
 
 .form__input-error_active {
@@ -102,12 +103,12 @@
   opacity: 0.8;
 }
 
-.form__button_inactive{
+.form__button_inactive {
   opacity: 0.2;
   border: 1px solid #000000;
   border-radius: 2px;
   color: #000000;
-  background: #F7F7F7;
+  background: #f7f7f7;
 
   pointer-events: none;
 }
