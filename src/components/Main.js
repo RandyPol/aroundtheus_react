@@ -2,7 +2,6 @@ import React from 'react'
 import Card from './CardTemplate/Card'
 import pencilEdit from '../images/Edit-Button.svg'
 import addIcon from '../images/add-button.svg'
-import api from '../utils/api'
 // Import the context value
 import CurrentUserContext from '../contexts/CurrentUserContext'
 
@@ -13,26 +12,10 @@ const Main = ({
   onCardClick,
   handleCardDelete,
   setSelectedCard,
+  onCardLike,
 }) => {
   // Get the value of the context
-  const { currentUser, cards, setCards } = React.useContext(CurrentUserContext)
-
-  function handleCardLike(card) {
-    // Check one more time if this card was already liked
-    const isLiked = card.likes.some((user) => user._id === currentUser._id)
-
-    // Send a request to the API and getting the updated card data
-    api
-      .changeLikeCardStatus(card._id, !isLiked)
-      .then((newCard) => {
-        setCards((state) =>
-          state.map((currentCard) =>
-            currentCard._id === card._id ? newCard : currentCard
-          )
-        )
-      })
-      .catch((err) => console.log(err))
-  }
+  const { currentUser, cards } = React.useContext(CurrentUserContext)
 
   const onCardDelete = (card) => {
     setSelectedCard(card)
@@ -95,7 +78,7 @@ const Main = ({
               card={card}
               onCardClick={onCardClick}
               onCardDelete={onCardDelete}
-              onCardLike={handleCardLike}
+              onCardLike={onCardLike}
             />
           )
         })}

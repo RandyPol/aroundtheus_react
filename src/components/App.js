@@ -68,6 +68,24 @@ const App = () => {
       .finally(() => setIsLoading(false))
   }
 
+  // Card like function
+  function handleCardLike(card) {
+    // Check one more time if this card was already liked
+    const isLiked = card.likes.some((user) => user._id === currentUser._id)
+
+    // Send a request to the API and getting the updated card data
+    api
+      .changeLikeCardStatus(card._id, !isLiked)
+      .then((newCard) => {
+        setCards((state) =>
+          state.map((currentCard) =>
+            currentCard._id === card._id ? newCard : currentCard
+          )
+        )
+      })
+      .catch((err) => console.log(err))
+  }
+
   // Handle onSubmit functions for the modals
   const handleSubmitEditProfile = (e) => {
     setIsLoading(true)
@@ -95,13 +113,14 @@ const App = () => {
 
   return (
     <div className="page page__center">
-      <CurrentUserContext.Provider value={{ currentUser, cards, setCards }}>
+      <CurrentUserContext.Provider value={{ currentUser, cards }}>
         <Header />
         <Main
           onEditProfileClick={handleEditProfileClick}
           onAddPlaceClick={handleAddPlaceClick}
           onEditAvatarClick={handleEditAvatarClick}
           onCardClick={handleCardClick}
+          onCardLike={handleCardLike}
           handleCardDelete={handleDeleteClick}
           setSelectedCard={setSelectedCard}
         />

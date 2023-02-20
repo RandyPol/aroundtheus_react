@@ -8,16 +8,13 @@ const AddNewPlacePopup = ({
   onAddPlaceClick,
   handleSubmitAddPlace,
 }) => {
-  const { values, handleChange, errors, isValid, resetForm } =
-    useFormAndValidation()
-  console.log('errors: ', errors)
+  const { values, handleChange, errors, isValid } = useFormAndValidation()
   // Check if submit button should be disabled
   const isSubmitDisabled = !isValid
 
   const handleSubmit = (e) => {
     e.preventDefault()
     handleSubmitAddPlace(values)
-    // resetForm()
   }
 
   return (
