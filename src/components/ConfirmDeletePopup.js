@@ -1,20 +1,32 @@
 import React from 'react'
-import PopupWithForm from './PopupWithForm'
+import Popup from './Popup'
 
 const ConfirmDeletePopup = ({
+  isLoading,
   isConfirmDeletePopupOpen,
   onConfirmDeleteClick,
-  handleSubmitConfirmDelete,
+  onClose,
 }) => {
+  const handleConfirmDelete = () => {
+    onConfirmDeleteClick()
+  }
+
   return (
-    <PopupWithForm
-      formTitle="Are you sure?"
-      name="confirmDelete"
-      buttonText="Confirm"
-      onClose={onConfirmDeleteClick}
+    <Popup
+      containerName="confirmDelete"
+      onClose={onClose}
       isOpen={isConfirmDeletePopupOpen}
-      handleSubmit={handleSubmitConfirmDelete}
-    />
+    >
+      <h2 className="form__title">Are you sure?</h2>
+      <button
+        onClick={handleConfirmDelete}
+        aria-label="submit"
+        type="submit"
+        className="form__button popup__delete_confirm"
+      >
+        {isLoading ? 'Deleting' : 'Confirm'}
+      </button>
+    </Popup>
   )
 }
 
