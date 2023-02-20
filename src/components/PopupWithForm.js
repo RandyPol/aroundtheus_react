@@ -9,6 +9,7 @@ const PopupWithForm = ({
   onClose,
   children,
   handleSubmit,
+  isSubmitDisabled,
 }) => {
   return (
     <Popup isOpen={isOpen} containerName={name} onClose={onClose}>
@@ -22,7 +23,10 @@ const PopupWithForm = ({
           <button
             aria-label="submit"
             type="submit"
-            className="form__button form__submit"
+            className={`form__button ${
+              isSubmitDisabled ? 'form__button_inactive' : ''
+            }`}
+            disabled={isSubmitDisabled}
           >
             {buttonText}
           </button>
