@@ -1,35 +1,56 @@
 import React from 'react'
 import PopupWithForm from './PopupWithForm'
+import { useFormAndValidation } from '../hook/useFormValidation'
 
 const AddNewPlacePopup = ({
+  isLoading,
   isAddPlacePopupOpen,
   onAddPlaceClick,
   handleSubmitAddPlace,
 }) => {
+  const { values, handleChange, errors, isValid, resetForm } =
+    useFormAndValidation()
+  console.log('errors: ', errors)
+  // Check if submit button should be disabled
+  const isSubmitDisabled = !isValid
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    handleSubmitAddPlace(values)
+    // resetForm()
+  }
+
   return (
     <PopupWithForm
       formTitle="New Place"
       name="addPlace"
-      buttonText="Create"
+      buttonText={isLoading ? 'Creating...' : 'Create'}
       onClose={onAddPlaceClick}
       isOpen={isAddPlacePopupOpen}
-      handleSubmit={handleSubmitAddPlace}
+      handleSubmit={handleSubmit}
+      isSubmitDisabled={isSubmitDisabled}
     >
       <fieldset className="form__fieldset">
         <label className="form__field">
           <input
             type="text"
-            className="form__input"
+            className={`form__input ${
+              errors.name ? 'form__input_type_error' : ''
+            }`}
             id="title"
             name="name"
             placeholder="Title"
-            minLength="1"
+            minLength="2"
             maxLength="30"
             required
+            value={values.name || ''}
+            onChange={handleChange}
           />
-          <span className="form__input-error title-input-error">
-            Hello This is an Error
-          </span>
+          {errors.name && (
+            <span className="form__input-error">
+              {errors.name || 'This field is required'}
+            </span>
+          )}
         </label>
         <label className="form__field">
           <input
@@ -39,10 +60,14 @@ const AddNewPlacePopup = ({
             name="link"
             placeholder="Image link"
             required
+            value={values.link || ''}
+            onChange={handleChange}
           />
-          <span className="form__input-error link-input-error">
-            Hello This is an Error
-          </span>
+          {errors.link && (
+            <span className="form__input-error">
+              {errors.link || 'This field is required'}
+            </span>
+          )}
         </label>
       </fieldset>
     </PopupWithForm>
