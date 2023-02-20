@@ -24,6 +24,7 @@ const App = () => {
   const [currentUser, setCurrentUser] = React.useState(null)
   const [cards, setCards] = React.useState([])
   const [isLoading, setIsLoading] = React.useState(false)
+  console.log(currentUser)
 
   React.useEffect(() => {
     api
@@ -87,10 +88,17 @@ const App = () => {
   }
 
   // Handle onSubmit functions for the modals
-  const handleSubmitEditProfile = (e) => {
+  const handleSubmitEditProfile = (data) => {
     setIsLoading(true)
-    e.preventDefault()
-    console.log('Edit Profile')
+    api
+      .patchUserInfo(data)
+      .then((res) => {
+        console.log('Profile Updated', res)
+        setCurrentUser(res)
+        setIsEditProfilePopupOpen((prevs) => !prevs)
+      })
+      .catch((err) => console.log(err))
+      .finally(() => setIsLoading(false))
   }
   // Handle onSubmit functions for the add new card modal
   const handleSubmitAddPlace = (newCard) => {
@@ -136,6 +144,7 @@ const App = () => {
 
         {isEditProfilePopupOpen && (
           <EditProfilePopup
+            isLoading={isLoading}
             isEditProfilePopupOpen={isEditProfilePopupOpen}
             onEditProfileClick={handleEditProfileClick}
             handleSubmitEditProfile={handleSubmitEditProfile}
