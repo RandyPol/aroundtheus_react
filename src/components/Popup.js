@@ -2,8 +2,6 @@ import React from 'react'
 import closeIcon from '../images/CloseIcon.svg'
 
 const Popup = ({ isOpen, containerName, onClose, children }) => {
-  console.log('isOpen', isOpen)
-  console.log(isOpen ? 'popup_opened' : '')
   // here is `useEffect` for the `Escape` listener
   React.useEffect(() => {
     // with this we prevent adding the listener if the popup is not opened
