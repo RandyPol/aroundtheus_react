@@ -100,3 +100,6 @@
   display: flex;
 }
 
+.popup__delete_confirm{
+  width: 100%;
+}
