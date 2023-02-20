@@ -49,4 +49,4 @@ Note that this project is based on a previous project that was built using vanil
 
 ### An example of a valid input with no validation message and enabled submit button
 
-![Valid form Image](/src/images/ProjectScreenshots/InvalidForm.png)
+![Valid form Image](/src/images/ProjectScreenshots/ValidForm.png)
