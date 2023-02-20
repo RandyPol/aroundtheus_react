@@ -24,7 +24,6 @@ const App = () => {
   const [currentUser, setCurrentUser] = React.useState(null)
   const [cards, setCards] = React.useState([])
   const [isLoading, setIsLoading] = React.useState(false)
-  console.log(currentUser)
 
   React.useEffect(() => {
     api
@@ -114,9 +113,16 @@ const App = () => {
       .finally(() => setIsLoading(false))
   }
 
-  const handleSubmitEditAvatar = (e) => {
-    e.preventDefault()
-    console.log('Edit Avatar')
+  const handleSubmitEditAvatar = (data) => {
+    setIsLoading(true)
+    api
+      .patchUserAvatar(data)
+      .then((res) => {
+        setCurrentUser(res)
+        setIsEditAvatarPopupOpen((prevs) => !prevs)
+      })
+      .catch((err) => console.log(err))
+      .finally(() => setIsLoading(false))
   }
 
   return (
@@ -136,6 +142,7 @@ const App = () => {
 
         {isEditAvatarPopupOpen && (
           <EditAvatarPopup
+            isLoading={isLoading}
             isEditAvatarPopupOpen={isEditAvatarPopupOpen}
             onEditAvatarClick={handleEditAvatarClick}
             handleSubmitEditAvatar={handleSubmitEditAvatar}

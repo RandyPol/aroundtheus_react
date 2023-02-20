@@ -26,7 +26,6 @@ const EditProfilePopup = ({
       isOpen={isEditProfilePopupOpen}
       onClose={onEditProfileClick}
       handleSubmit={handleSubmit}
-      children
       isSubmitDisabled={isSubmitDisabled}
     >
       <fieldset className="form__fieldset">
