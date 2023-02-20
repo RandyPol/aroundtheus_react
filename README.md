@@ -2,6 +2,8 @@
 
 This project is a React-based web application that allows users to edit their profiles, add and delete posts, and like posts in a social media-like setting. The application is built using modern front-end technologies and follows good coding practices.
 
+## To check the live project, visit the following link: https://randypol.github.io/aroundtheus_react/
+
 ## Technologies Used
 - React
 - Fetch API
